@@ -1,8 +1,10 @@
+import { ReactElement } from "react";
+
 interface ButtonProps{
     text: string,
     varient: "primary" | "secondary",
     size?: "sm" | "lg" | "md",
-    frontIcon?: any,
+    frontIcon?: ReactElement,
     onClick?: ()=> void
 }
 
