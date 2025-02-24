@@ -1,0 +1,5 @@
+export function LinkIcon(){
+    return(
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Link-Chain--Streamline-Core" className="size-6"><desc>Link Chain Streamline Icon: https://streamlinehq.com</desc><g id="link-chain--create-hyperlink-link-make-unlink-connection-chain"><path id="Vector 2513" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="m6 3 1.46436 -1.46447c1.38071 -1.380708 3.61924 -1.380708 5.00004 0 1.3807 1.38072 1.3807 3.61929 0 5.00001L11 8" stroke-width="1"></path><path id="Vector 2514" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="m7.99989 11 -1.46436 1.4645c-1.38071 1.3807 -3.61928 1.3807 -5 0 -1.380709 -1.3807 -1.380708 -3.61932 0 -5.00004L2.99989 6" stroke-width="1"></path><path id="Vector 2515" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M9 5 5 9" stroke-width="1"></path></g></svg>
+    )
+}

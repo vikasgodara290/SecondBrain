@@ -1,0 +1,5 @@
+export function TagIcon(){
+    return(
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Sign-Hashtag--Streamline-Core" className="size-6"><desc>Sign Hashtag Streamline Icon: https://streamlinehq.com</desc><g id="sign-hashtag--mail-sharp-sign-hashtag-tag"><path id="Vector" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M0.5 4.25h13" stroke-width="1"></path><path id="Vector_2" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M0.5 9.75h13" stroke-width="1"></path><path id="Vector_3" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="m11.25 0.5 -2.5 13" stroke-width="1"></path><path id="Vector_4" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="m5.75 0.5 -2.5 13" stroke-width="1"></path></g></svg>
+    )
+}

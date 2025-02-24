@@ -1,3 +1,9 @@
+import { DocumentIcon } from "../icon/DocumentIcon";
+import { LinkIcon } from "../icon/LinkIcon";
+import { TagIcon } from "../icon/TagIcon";
+import { TweetIcon } from "../icon/TweetIcon";
+import { VideoIcon } from "../icon/VideoIcon";
+import { NavItem } from "./NavItem";
 
 export function SideBar(){
 
@@ -9,28 +15,13 @@ export function SideBar(){
 
                     <span className="text-3xl font-semibold pl-6">SecondBrain</span>
                 </div>
-                <div>
-                    <div className="h-12 w-full flex items-center justify-start px-18 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Twitter--Streamline-Core" className="size-6"><desc>Twitter Streamline Icon: https://streamlinehq.com</desc><g id="twitter--media-twitter-social"><path id="Vector" fill="#d7e0ff" d="M4.00002 9.40002c-0.71406 0.56087 -1.53365 0.97238 -2.41 1.20998 -0.09653 0.0351 -0.17993 0.099 -0.23886 0.183 -0.05894 0.0841 -0.09056 0.1843 -0.09056 0.287 0 0.1027 0.03162 0.2029 0.09056 0.287 0.05893 0.0841 0.14233 0.148 0.23886 0.183C8.51002 14.39 12.91 10 12.24 5.13002l1.12 -2.32h-1.3C10.44 0.820022 6.14002 0.920022 6.85002 5.16002c0 0 -2.3 0.41 -5.24 -2.48 -0.06801 -0.06714 -0.15384 -0.11339 -0.24732 -0.13326 -0.09348 -0.01987 -0.19069 -0.01254 -0.28013 0.02113 -0.089441 0.03367 -0.167358 0.09227 -0.224524 0.16886 -0.057165 0.07658 -0.091184 0.16795 -0.098029 0.26327 -0.310868 1.27785 -0.155296 2.6247 0.438703 3.79803 0.594 1.17333 1.58739 2.09604 2.8013 2.60197Z" stroke-width="1"></path><path id="Vector_2" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M4.00002 9.40002c-0.71406 0.56087 -1.53365 0.97238 -2.41 1.20998 -0.09653 0.0351 -0.17993 0.099 -0.23886 0.183 -0.05894 0.0841 -0.09056 0.1843 -0.09056 0.287 0 0.1027 0.03162 0.2029 0.09056 0.287 0.05893 0.0841 0.14233 0.148 0.23886 0.183C8.51002 14.39 12.91 10 12.24 5.13002l1.12 -2.32h-1.3C10.44 0.820022 6.14002 0.920022 6.85002 5.16002c0 0 -2.3 0.41 -5.24 -2.48 -0.06801 -0.06714 -0.15384 -0.11339 -0.24732 -0.13326 -0.09348 -0.01987 -0.19069 -0.01254 -0.28013 0.02113 -0.089441 0.03367 -0.167358 0.09227 -0.224524 0.16886 -0.057165 0.07658 -0.091184 0.16795 -0.098029 0.26327 -0.310868 1.27785 -0.155296 2.6247 0.438703 3.79803 0.594 1.17333 1.58739 2.09604 2.8013 2.60197Z" stroke-width="1"></path></g></svg>
-                        <span className="pl-6 hover:text-violet-300">Tweets</span>
-                    </div>
-                    <div className="h-12 w-full flex items-center justify-start px-18 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Live-Video--Streamline-Core" className="size-6"><desc>Live Video Streamline Icon: https://streamlinehq.com</desc><g id="live-video"><g id="Vector 32"><path fill="#d7e0ff" d="M5.01364 8.76437V5.23571c0 -0.4076 0.47443 -0.66524 0.86048 -0.46729l3.44093 1.76433c0.39722 0.20367 0.39722 0.73091 0 0.93459L5.87412 9.23166c-0.38605 0.19795 -0.86048 -0.05969 -0.86048 -0.46729Z" stroke-width="1"></path></g><path id="Vector 33" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M5.01364 8.76431V5.23565c0 -0.4076 0.47443 -0.66524 0.86048 -0.46729l3.44093 1.76432c0.39722 0.20368 0.39722 0.73092 0 0.93459L5.87412 9.2316c-0.38605 0.19795 -0.86048 -0.0597 -0.86048 -0.46729Z" stroke-width="1"></path><path id="Ellipse 300" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M0.60965 6.13892c-0.032173 0.26094 -0.048741 0.52671 -0.048741 0.79636 0 0.26964 0.016568 0.53542 0.048741 0.79636" stroke-width="1"></path><path id="Ellipse 305" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M3.11543 1.7988c0.2099 -0.15833 0.43178 -0.30557 0.6653 -0.44039s0.47197 -0.25336 0.71404 -0.35597" stroke-width="1"></path><path id="Ellipse 303" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M1.06785 4.42928c0.1026 -0.24207 0.22114 -0.48052 0.35597 -0.71404 0.13482 -0.23352 0.28205 -0.4554 0.44039 -0.6653" stroke-width="1"></path><path id="Ellipse 306" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M7.0122 0.5c3.5495 0 6.4269 2.91015 6.4269 6.5 0 3.5899 -2.8774 6.5 -6.4269 6.5 -2.44596 0 -4.57279 -1.3819 -5.65881 -3.4159" stroke-width="1"></path></g></svg>
-                        <span className="pl-6 hover:text-violet-300">Videos</span>
-                    </div>
-                    <div className="h-12 w-full flex items-center justify-start px-18 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="New-File--Streamline-Core" className="size-6"><desc>New File Streamline Icon: https://streamlinehq.com</desc><g id="new-file--empty-common-file-content"><g id="Vector"><path fill="#ffffff" d="M8.5 0.5v4h4" stroke-width="1"></path></g><g id="Vector_2"><path fill="#ffffff" d="M8.5 0.5v4h4" stroke-width="1"></path></g><path id="Vector_3" fill="#d7e0ff" d="M12.5 12.5c0 0.2652 -0.1054 0.5196 -0.2929 0.7071s-0.4419 0.2929 -0.7071 0.2929h-9c-0.26522 0 -0.51957 -0.1054 -0.70711 -0.2929C1.60536 13.0196 1.5 12.7652 1.5 12.5v-11c0 -0.26522 0.10536 -0.51957 0.29289 -0.707107C1.98043 0.605357 2.23478 0.5 2.5 0.5H9L12.5 4v8.5Z" stroke-width="1"></path><path id="Vector 2530" fill="#ffffff" d="M8.5 4.5v-4H9L12.5 4v0.5h-4Z" stroke-width="1"></path><path id="Vector_4" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M12.5 12.5c0 0.2652 -0.1054 0.5196 -0.2929 0.7071s-0.4419 0.2929 -0.7071 0.2929h-9c-0.26522 0 -0.51957 -0.1054 -0.70711 -0.2929C1.60536 13.0196 1.5 12.7652 1.5 12.5v-11c0 -0.26522 0.10536 -0.51957 0.29289 -0.707107C1.98043 0.605357 2.23478 0.5 2.5 0.5H9L12.5 4v8.5Z" stroke-width="1"></path><path id="Vector 2529" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M8.5 0.5v4h4" stroke-width="1"></path></g></svg>
-                        <span className="pl-6 hover:text-violet-300">Documents</span>
-                    </div>
-                    <div className="h-12 w-full flex items-center justify-start px-18 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Link-Chain--Streamline-Core" className="size-6"><desc>Link Chain Streamline Icon: https://streamlinehq.com</desc><g id="link-chain--create-hyperlink-link-make-unlink-connection-chain"><path id="Vector 2513" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="m6 3 1.46436 -1.46447c1.38071 -1.380708 3.61924 -1.380708 5.00004 0 1.3807 1.38072 1.3807 3.61929 0 5.00001L11 8" stroke-width="1"></path><path id="Vector 2514" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="m7.99989 11 -1.46436 1.4645c-1.38071 1.3807 -3.61928 1.3807 -5 0 -1.380709 -1.3807 -1.380708 -3.61932 0 -5.00004L2.99989 6" stroke-width="1"></path><path id="Vector 2515" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M9 5 5 9" stroke-width="1"></path></g></svg>
-                        <span className="pl-6 hover:text-violet-300">Links</span>
-                    </div>
-                    <div className="h-12 w-full flex items-center justify-start px-18 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" id="Sign-Hashtag--Streamline-Core" className="size-6"><desc>Sign Hashtag Streamline Icon: https://streamlinehq.com</desc><g id="sign-hashtag--mail-sharp-sign-hashtag-tag"><path id="Vector" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M0.5 4.25h13" stroke-width="1"></path><path id="Vector_2" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="M0.5 9.75h13" stroke-width="1"></path><path id="Vector_3" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="m11.25 0.5 -2.5 13" stroke-width="1"></path><path id="Vector_4" stroke="#4147d5" stroke-linecap="round" stroke-linejoin="round" d="m5.75 0.5 -2.5 13" stroke-width="1"></path></g></svg>
-                        <span className="pl-6 hover:text-violet-300">Tags</span>
-                    </div>
-                </div>
+                
+                <NavItem icon={<TweetIcon/>} navItem="Tweets"/>
+                <NavItem icon={<VideoIcon/>} navItem="Videos"/>
+                <NavItem icon={<DocumentIcon/>} navItem="Documents"/>
+                <NavItem icon={<LinkIcon/>} navItem="Links"/>
+                <NavItem icon={<TagIcon/>} navItem="Tags"/>
+                
             </div>
         </>
     )
