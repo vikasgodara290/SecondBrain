@@ -1,11 +1,12 @@
 import express from 'express'
-import {ContentModel, UserModel} from './db';
+import {ContentModel, LinkModel, UserModel} from './db';
 import mongoose from 'mongoose';
 import {z} from 'zod';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { JWT_SECRET } from './config';
 import { auth } from './middleware';
+import { random } from './utils';
 
 const app = express();
 const port = 3000;
@@ -104,23 +105,79 @@ app.post('/api/v1/content', auth, async (req, res)=>{
     }
     catch(error){
         console.log(error);
+        res.send('failure')
     }
 })
 
-app.get('/api/v1/content', auth, (req, res)=>{
-    
+app.get('/api/v1/content', auth, async (req, res)=>{
+    const content = await ContentModel.find(
+        {
+            userId: req.userId
+        }
+    )
+    res.json(content);
 })
 
-app.delete('/api/v1/content', auth, (req, res)=>{
-    
+app.delete('/api/v1/content', auth, async (req, res)=>{
+    const contentId = req.body.contentId;
+    await ContentModel.deleteOne(
+        {
+            _id: contentId
+        }
+    )
 })
 
-app.post('/api/v1/brain/share', auth, (req, res)=>{
-    
+app.post('/api/v1/brain/share', auth, async (req, res)=>{
+    const isShare = req.body.share;
+    if(isShare){
+        const hash = random(10);
+        await LinkModel.create(
+            {
+                hash: hash,
+                userId: req.userId
+            }
+        )
+        res.send(hash);
+        return;
+    }
+    else{
+        await LinkModel.deleteOne({
+            userId: req.userId
+        })
+        res.send("link removed");
+        return;
+    }
+
 })
 
-app.post('/api/v1/brain/:sharedLink', (req, res)=>{
-    
+app.post('/api/v1/brain/:sharedLink', async (req, res)=>{
+    //chech the hash and get the userId
+    const hash = req.params.sharedLink;
+    const link = await LinkModel.findOne({
+        hash:hash
+    })
+
+    if(!link){
+        res.send('404')
+        return;
+    }
+
+    const content = await ContentModel.find(
+        {
+            userId: link.userId
+        }
+    )
+
+    const user = await UserModel.findOne(
+        {
+            _id: link.userId
+        }
+    )
+
+    res.json({
+        username: user?.username,
+        content : content
+    })
 })
 
 app.listen(port, ()=>{

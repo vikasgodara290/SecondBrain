@@ -9,7 +9,8 @@ function App() {
     <>
       {/* <Button text="Add Content" varient="primary" frontIcon={<AddIcon/>}/>
       <Button text="Share Brain" varient="secondary" frontIcon={<ShareIcon/>}/> */}
-      <SideBar/>
+      {/* <SideBar/> */}
+      
     </>
   )
 }

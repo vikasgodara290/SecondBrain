@@ -14,17 +14,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const db_1 = require("./db");
-const console_1 = require("console");
 const mongoose_1 = __importDefault(require("mongoose"));
 const zod_1 = require("zod");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const config_1 = require("./config");
 const middleware_1 = require("./middleware");
+const utils_1 = require("./utils");
 const app = (0, express_1.default)();
 const port = 3000;
 app.use(express_1.default.json());
-mongoose_1.default.connect('mongodb+srv://4ytvoch:ZtS3sF0KzgKBOi0C@cluster0.s2ief.mongodb.net/secondBrain').then(() => (0, console_1.log)("DB connected successfully"));
+mongoose_1.default.connect('mongodb+srv://4ytvoch:ZtS3sF0KzgKBOi0C@cluster0.s2ief.mongodb.net/secondBrain').then(() => console.log("DB connected successfully"));
 const User = zod_1.z.object({
     username: zod_1.z.string({ message: "please enter username" })
         .min(3, { message: "username must contain at least 3 characters" })
@@ -85,17 +85,79 @@ app.post('/api/v1/signin', (req, res) => __awaiter(void 0, void 0, void 0, funct
         res.send("user does not exist");
     }
 }));
-app.post('/api/v1/content', middleware_1.auth, (req, res) => {
-    res.send('new req');
-});
-app.get('/api/v1/content', (req, res) => {
-});
-app.delete('/api/v1/content', (req, res) => {
-});
-app.post('/api/v1/brain/share', (req, res) => {
-});
-app.post('/api/v1/brain/:sharedLink', (req, res) => {
-});
+app.post('/api/v1/content', middleware_1.auth, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const title = req.body.title;
+    const link = req.body.link;
+    const type = req.body.type;
+    const tags = req.body.tags;
+    const userId = req.userId;
+    try {
+        yield db_1.ContentModel.create({
+            link: link,
+            type: type,
+            title: title,
+            tags: tags,
+            userId: userId
+        });
+        res.send('done');
+    }
+    catch (error) {
+        console.log(error);
+        res.send('failure');
+    }
+}));
+app.get('/api/v1/content', middleware_1.auth, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const content = yield db_1.ContentModel.find({
+        userId: req.userId
+    });
+    res.json(content);
+}));
+app.delete('/api/v1/content', middleware_1.auth, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const contentId = req.body.contentId;
+    yield db_1.ContentModel.deleteOne({
+        _id: contentId
+    });
+}));
+app.post('/api/v1/brain/share', middleware_1.auth, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const isShare = req.body.share;
+    if (isShare) {
+        const hash = (0, utils_1.random)(10);
+        yield db_1.LinkModel.create({
+            hash: hash,
+            userId: req.userId
+        });
+        res.send(hash);
+        return;
+    }
+    else {
+        yield db_1.LinkModel.deleteOne({
+            userId: req.userId
+        });
+        res.send("link removed");
+        return;
+    }
+}));
+app.post('/api/v1/brain/:sharedLink', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    //chech the hash and get the userId
+    const hash = req.params.sharedLink;
+    const link = yield db_1.LinkModel.findOne({
+        hash: hash
+    });
+    if (!link) {
+        res.send('404');
+        return;
+    }
+    const content = yield db_1.ContentModel.find({
+        userId: link.userId
+    });
+    const user = yield db_1.UserModel.findOne({
+        _id: link.userId
+    });
+    res.json({
+        username: user === null || user === void 0 ? void 0 : user.username,
+        content: content
+    });
+}));
 app.listen(port, () => {
     console.log(`app is listening to http://localhost:${port}`);
 });
