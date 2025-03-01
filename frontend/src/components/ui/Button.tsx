@@ -17,7 +17,7 @@ const defaultButtonStyle = "w-38 h-10 font-light rounded-md flex items-center mx
 export function Button(props: ButtonProps){
     return(
         <>
-            <button className={`${buttonVarient[props.varient]} ${defaultButtonStyle}`}>
+            <button className={`${buttonVarient[props.varient]} ${defaultButtonStyle}`} onClick={props.onClick}>
                 {props.frontIcon} <span className="pr-1"></span>
             {props.text}</button>
         </>
