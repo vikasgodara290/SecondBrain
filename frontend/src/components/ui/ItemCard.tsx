@@ -32,7 +32,7 @@ export function ItemCard({icon, title, link, tags, date}: ItemCardProps){
                     </iframe>
                 ) : null}
 
-                { (!link.startsWith('https://www.youtube.com') && !link.startsWith('https://x.com/') )?
+                { (!link.startsWith('https://www.youtube.com') && !link.startsWith('https://x.com/') && !link.startsWith('https://youtu.be'))?
                     <a href={link} target="_blank">
                         <div className="flex items-center justify-center h-40 bg-purple-300/20 border border-gray-400 shadow">
                             <img src={`https://www.google.com/s2/favicons?sz=64&domain=${link}`}></img>
